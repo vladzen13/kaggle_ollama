@@ -30,7 +30,7 @@ def get_redis():
 REDIS = get_redis()
 print(f"{REDIS=}")
 
-app = Celery('collab', broker=REDIS, backend=REDIS)
+app = Celery('main', broker=REDIS, backend=REDIS)
 
 @app.task
 def do_inference(model: str, query: str):
