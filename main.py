@@ -31,6 +31,7 @@ REDIS = get_redis()
 print(f"{REDIS=}")
 
 app = Celery('main', broker=REDIS, backend=REDIS)
+app.conf.broker_url = REDIS
 
 @app.task
 def do_inference(model: str, query: str):
