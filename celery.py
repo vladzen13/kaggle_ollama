@@ -23,10 +23,12 @@ def get_redis():
 	finally:
 		if not redis:
 			raise Exception("specify either Kaggle Secret REDIS or put .env file with REDIS env on your local machine!")
-		return redis
+	
+	return redis
 
 
 REDIS = get_redis()
+print(f"{REDIS=}")
 
 app = Celery('collab', broker=REDIS, backend=REDIS)
 
